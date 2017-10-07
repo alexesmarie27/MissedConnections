@@ -6,15 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class FontManager {
+class FontManager {
 
-    private static final String ROOT = "fonts/", FONTAWESOME = ROOT + "fontawesome-webfont.ttf";
+    private static final String ROOT = "fonts/";
+    static final String FONTAWESOME = ROOT + "fontawesome-webfont.ttf";
 
-    public static Typeface getTypeface(Context context, String font) {
+    static Typeface getTypeface(Context context, String font) {
         return Typeface.createFromAsset(context.getAssets(), font);
     }
 
-    private static void markAsIconContainer(View view, Typeface typeface) {
+    static void markAsIconContainer(View view, Typeface typeface) {
         if (view instanceof ViewGroup) {
             ViewGroup viewGroup = (ViewGroup) view;
             for (int i = 0; i < viewGroup.getChildCount(); i++) {

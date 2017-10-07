@@ -1,5 +1,6 @@
 package missedconnections.apresswood.com.missedconnections;
 
+import android.graphics.Typeface;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -18,10 +19,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        Typeface iconFont = FontManager.getTypeface(getApplicationContext(),
+                FontManager.FONTAWESOME);
+        FontManager.markAsIconContainer(findViewById(R.id.maps_header), iconFont);
     }
 
 
