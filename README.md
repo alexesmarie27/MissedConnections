@@ -4,9 +4,10 @@ My first non-work-related Android application.
 ## //TODO (Not in order)
 - ~~Create GitHub repo~~
 - ~~Create initial Android app~~
+- ~~Add Font Awesome~~
 - Make home screen
-  - Make home screen header
-  - Find Map API
+  - ~~Make home screen header~~
+  - Find Map API (Use Android's Google Maps?)
   - Functionality for putting a pin on the map
   - Functionality for clicking a pin and taking to Pin screen
 - Make pin screen
