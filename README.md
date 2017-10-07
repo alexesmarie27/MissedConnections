@@ -3,7 +3,7 @@ My first non-work-related Android application.
 
 ## //TODO (Not in order)
 - ~~Create GitHub repo~~
-- Create initial Android app
+- ~~Create initial Android app~~
 - Make home screen
   - Make home screen header
   - Find Map API
