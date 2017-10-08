@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">MissedConnections</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_add_connection">Add Connection</string>
 
     <!-- Main Drawer Strings -->
     <string name="connect">Connect</string>

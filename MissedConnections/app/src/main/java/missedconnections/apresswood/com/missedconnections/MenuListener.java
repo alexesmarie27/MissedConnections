@@ -1,6 +1,7 @@
 package missedconnections.apresswood.com.missedconnections;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -27,6 +28,8 @@ class MenuListener implements NavigationView.OnNavigationItemSelectedListener {
                 if (this.activity instanceof MapsActivity) {
                     break;
                 } else {
+                    Intent mapIntent = new Intent(activity, MapsActivity.class);
+                    activity.startActivity(mapIntent);
                     break;
                 }
             case R.id.connections:
@@ -39,7 +42,12 @@ class MenuListener implements NavigationView.OnNavigationItemSelectedListener {
                 break;
         }
 
-        drawerLayout.closeDrawer(GravityCompat.START);
+        if (activity instanceof AddConnectionActivity) {
+            drawerLayout.closeDrawer(GravityCompat.END);
+        } else {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+
         return true;
     }
 

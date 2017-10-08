@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="fa_icon_arrow_left">&#xf060;</string>
     <string name="fa_icon_bars">&#xf0c9;</string>
     <string name="fa_icon_plus">&#xf067;</string>
 </resources>

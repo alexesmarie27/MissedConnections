@@ -1,5 +1,6 @@
 package missedconnections.apresswood.com.missedconnections;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentActivity;
@@ -20,7 +21,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
+        View.OnClickListener {
 
     protected MenuListener menuListener;
 
@@ -35,6 +37,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
         initializeUI();
+    }
+
+    @Override
+    public void onClick(View v) {
+        Intent addConnectionIntent = new Intent(this, AddConnectionActivity.class);
+        this.startActivity(addConnectionIntent);
+
     }
 
     protected void initializeUI() {
@@ -53,6 +62,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         menuItemText.setSpan(new ForegroundColorSpan(ContextCompat.getColor(getApplicationContext(),
                 R.color.colorAccent)), 0, menuItemText.length(), 0);
         menuItem.setTitle(menuItemText);
+
+        TextView addConnectionButton = findViewById(R.id.add_connection_button);
+        addConnectionButton.setOnClickListener(this);
     }
 
     /**
