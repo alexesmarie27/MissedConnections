@@ -14,11 +14,11 @@ My first non-work-related Android application.
   - Make description of connection
   - Make area for user's info
   - Make header
-- Make drop down list
-  - Make profile option
-  - Make possible connections option
-  - Make settings option
-  - Make connections option
+- ~~Make drop down list~~
+  - ~~Make profile option~~
+  - ~~Make possible connections option~~
+  - ~~Make settings option~~
+  - ~~Make connections option~~
 - Make profile page
   - Name
   - Picture

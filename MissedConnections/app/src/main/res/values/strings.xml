@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">MissedConnections</string>
     <string name="title_activity_maps">Map</string>
+
+    <!-- Main Drawer Strings -->
+    <string name="connect">Connect</string>
+    <string name="connections">Connections</string>
+    <string name="profile">Profile</string>
+    <string name="settings">Settings</string>
 </resources>
