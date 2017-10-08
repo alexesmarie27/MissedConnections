@@ -1,9 +1,15 @@
 package missedconnections.apresswood.com.missedconnections;
 
 import android.graphics.Typeface;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -39,6 +45,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         TextView sideMenuButton = findViewById(R.id.menu_button);
         menuListener = new MenuListener(this);
         sideMenuButton.setOnClickListener(getSideMenuListener());
+
+        NavigationView nav = findViewById(R.id.main_drawer);
+        Menu menu = nav.getMenu();
+        MenuItem menuItem = menu.findItem(R.id.connect);
+        SpannableString menuItemText = new SpannableString(menuItem.getTitle());
+        menuItemText.setSpan(new ForegroundColorSpan(ContextCompat.getColor(getApplicationContext(),
+                R.color.colorAccent)), 0, menuItemText.length(), 0);
+        menuItem.setTitle(menuItemText);
     }
 
     /**

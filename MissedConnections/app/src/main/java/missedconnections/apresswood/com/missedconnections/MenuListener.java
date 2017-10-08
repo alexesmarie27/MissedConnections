@@ -10,8 +10,10 @@ import android.view.MenuItem;
 class MenuListener implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawerLayout;
+    private Activity activity;
 
     MenuListener(Activity activity) {
+        this.activity = activity;
         NavigationView navigationView = activity.findViewById(R.id.main_drawer);
 
         drawerLayout = activity.findViewById(R.id.drawer_main);
@@ -22,7 +24,11 @@ class MenuListener implements NavigationView.OnNavigationItemSelectedListener {
 
         switch (item.getItemId()) {
             case R.id.connect:
-                break;
+                if (this.activity instanceof MapsActivity) {
+                    break;
+                } else {
+                    break;
+                }
             case R.id.connections:
                 break;
             case R.id.profile:
