@@ -8,4 +8,7 @@
     <string name="connections">Connections</string>
     <string name="profile">Profile</string>
     <string name="settings">Settings</string>
+
+    <!-- Add Connection Strings -->
+    <string name="selectedLocation">Selected Location:</string>
 </resources>
