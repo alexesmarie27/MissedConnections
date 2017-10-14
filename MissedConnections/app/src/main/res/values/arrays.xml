@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="hair_colors">
+        <item>Black</item>
+        <item>Blonde</item>
+        <item>Brown</item>
+        <item>Grey</item>
+        <item>Red</item>
+    </string-array>
+
+    <string-array name="ethnicities">
+        <item>Caucasian</item>
+        <item>African American</item>
+        <item>Hispanic</item>
+        <item>Latino</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="height">
+        <item>Average</item>
+        <item>Short</item>
+        <item>Tall</item>
+    </string-array>
+</resources>

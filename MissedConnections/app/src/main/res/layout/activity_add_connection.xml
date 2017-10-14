@@ -47,32 +47,331 @@
             android:textSize="20sp" />
     </RelativeLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical">
 
-        <TextView
-            android:id="@+id/location_label"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="8dp"
-            android:paddingEnd="0dp"
-            android:paddingStart="10dp"
-            android:paddingTop="8dp"
-            android:text="@string/selectedLocation"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="12sp" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/location_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="8dp"
-            android:paddingEnd="0dp"
-            android:paddingStart="10dp"
-            android:paddingTop="8dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="12sp" />
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/location_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp"
+                    android:paddingEnd="0dp"
+                    android:paddingStart="10dp"
+                    android:paddingTop="8dp"
+                    android:text="@string/selectedLocation"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/location_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp"
+                    android:paddingEnd="0dp"
+                    android:paddingStart="10dp"
+                    android:paddingTop="8dp"
+                    android:textColor="@color/colorSecondary"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:background="@color/colorGrey"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp" />
+
+            <TextView
+                android:id="@+id/time_frame_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp"
+                android:paddingEnd="0dp"
+                android:paddingStart="10dp"
+                android:paddingTop="8dp"
+                android:text="@string/timeFrame"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <EditText
+                    android:id="@+id/time_frame"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight=".5"
+                    android:inputType="time"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorSecondary"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radio_am"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onRadioButtonClicked"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="0dp"
+                        android:text="@string/am" />
+
+                    <RadioButton
+                        android:id="@+id/radio_pm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onRadioButtonClicked"
+                        android:text="@string/pm" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:background="@color/colorGrey"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp" />
+
+            <TextView
+                android:id="@+id/description_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp"
+                android:paddingEnd="0dp"
+                android:paddingStart="10dp"
+                android:paddingTop="8dp"
+                android:text="@string/connectionDescription"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/gender_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:paddingBottom="8dp"
+                    android:paddingEnd="0dp"
+                    android:paddingStart="30dp"
+                    android:paddingTop="8dp"
+                    android:text="@string/genderLabel"
+                    android:textColor="@color/colorSecondary"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onRadioButtonClicked"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="0dp"
+                        android:text="@string/female" />
+
+                    <RadioButton
+                        android:id="@+id/male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onRadioButtonClicked"
+                        android:text="@string/male" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/hair_color_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:paddingBottom="8dp"
+                    android:paddingEnd="0dp"
+                    android:paddingStart="30dp"
+                    android:paddingTop="8dp"
+                    android:text="@string/hairColor"
+                    android:textColor="@color/colorSecondary"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/hair_color_spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:paddingBottom="8dp"
+                    android:paddingEnd="0dp"
+                    android:paddingStart="0dp"
+                    android:paddingTop="8dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/ethnicity_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:paddingBottom="8dp"
+                    android:paddingEnd="0dp"
+                    android:paddingStart="30dp"
+                    android:paddingTop="8dp"
+                    android:text="@string/ethnicity"
+                    android:textColor="@color/colorSecondary"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/ethnicity_spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:paddingBottom="8dp"
+                    android:paddingEnd="0dp"
+                    android:paddingStart="0dp"
+                    android:paddingTop="8dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/height_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:paddingBottom="8dp"
+                    android:paddingEnd="0dp"
+                    android:paddingStart="30dp"
+                    android:paddingTop="8dp"
+                    android:text="@string/height"
+                    android:textColor="@color/colorSecondary"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/height_spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:paddingBottom="8dp"
+                    android:paddingEnd="0dp"
+                    android:paddingStart="0dp"
+                    android:paddingTop="8dp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:background="@color/colorGrey"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp" />
+
+            <TextView
+                android:id="@+id/comment_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp"
+                android:paddingEnd="0dp"
+                android:paddingStart="10dp"
+                android:paddingTop="8dp"
+                android:text="@string/connectionAdditionalComments"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/comment_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:background="@android:color/transparent"
+                android:gravity="top|start"
+                android:inputType="textMultiLine"
+                android:lines="8"
+                android:maxLines="10"
+                android:minLines="6"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:scrollbars="vertical"
+                android:textColor="@color/colorSecondary"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/save_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:background="@color/colorSecondary"
+                android:paddingBottom="8dp"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="8dp"
+                android:text="@string/saveConnection"
+                android:textColor="@color/colorPrimary" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

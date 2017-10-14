@@ -10,5 +10,17 @@
     <string name="settings">Settings</string>
 
     <!-- Add Connection Strings -->
-    <string name="selectedLocation">Selected Location:</string>
+    <string name="selectedLocation">You saw your connection at </string>
+    <string name="timeFrame">Around what time did you see your connection?\n(~30 mins)</string>
+    <string name="connectionDescription">Describe your connection:</string>
+    <string name="connectionAdditionalComments">Share your story:</string>
+    <string name="am">AM</string>
+    <string name="pm">PM</string>
+    <string name="genderLabel">Gender</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
+    <string name="hairColor">Hair Color</string>
+    <string name="ethnicity">Ethnicity</string>
+    <string name="height">Height</string>
+    <string name="saveConnection">Save Connection</string>
 </resources>

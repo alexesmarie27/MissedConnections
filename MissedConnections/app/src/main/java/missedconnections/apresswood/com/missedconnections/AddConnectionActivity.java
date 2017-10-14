@@ -6,6 +6,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -18,7 +23,8 @@ import com.google.android.gms.location.places.Places;
 
 
 public class AddConnectionActivity extends Activity implements View.OnClickListener,
-        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
+        AdapterView.OnItemSelectedListener {
     protected MenuListener menuListener;
     private String selectedLocationId;
     private Place selectedPlace;
@@ -44,6 +50,21 @@ public class AddConnectionActivity extends Activity implements View.OnClickListe
         onBackPressed();
     }
 
+    public void onRadioButtonClicked(View view) {
+        switch (view.getId()) {
+            case R.id.radio_am:
+                break;
+            case R.id.radio_pm:
+                break;
+            case R.id.female:
+                break;
+            case R.id.male:
+                break;
+            default:
+                break;
+        }
+    }
+
     protected void initializeUI() {
         Typeface iconFont = FontManager.getTypeface(getApplicationContext(),
                 FontManager.FONTAWESOME);
@@ -58,6 +79,39 @@ public class AddConnectionActivity extends Activity implements View.OnClickListe
 
         TextView locationText = findViewById(R.id.location_text);
         getPlaceById(locationText);
+
+        Spinner hairColorType = findViewById(R.id.hair_color_spinner);
+        hairColorType.setOnItemSelectedListener(this);
+
+        Spinner ethnicityType = findViewById(R.id.ethnicity_spinner);
+        ethnicityType.setOnItemSelectedListener(this);
+
+        Spinner height = findViewById(R.id.height_spinner);
+        height.setOnItemSelectedListener(this);
+
+        ArrayAdapter<CharSequence> hairAdapter = ArrayAdapter.createFromResource(this,
+                R.array.hair_colors, android.R.layout.simple_spinner_item);
+        hairAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        hairColorType.setAdapter(hairAdapter);
+
+        ArrayAdapter<CharSequence> ethnicityAdapter = ArrayAdapter.createFromResource(this,
+                R.array.ethnicities, android.R.layout.simple_spinner_item);
+        ethnicityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ethnicityType.setAdapter(ethnicityAdapter);
+
+        ArrayAdapter<CharSequence> heightAdapter = ArrayAdapter.createFromResource(this,
+                R.array.height, android.R.layout.simple_spinner_item);
+        heightAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        height.setAdapter(heightAdapter);
+
+        Button saveButton = findViewById(R.id.save_button);
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //call request when button is clicked
+                //still need to make database though....
+            }
+        });
     }
 
     protected void getPlaceById(final TextView locationText) {
@@ -113,5 +167,15 @@ public class AddConnectionActivity extends Activity implements View.OnClickListe
     @Override
     public void onConnectionSuspended(int i) {
         //do nothing for now
+    }
+
+    public void onItemSelected(AdapterView<?> parent, View view,
+                               int pos, long id) {
+        // will be used later to insert into DB
+        parent.getItemAtPosition(pos);
+    }
+
+    public void onNothingSelected(AdapterView<?> parent) {
+        // do nothing for now
     }
 }
