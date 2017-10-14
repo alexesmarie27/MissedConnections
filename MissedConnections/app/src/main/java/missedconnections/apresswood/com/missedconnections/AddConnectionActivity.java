@@ -9,11 +9,17 @@ import android.widget.TextView;
 
 public class AddConnectionActivity extends Activity implements View.OnClickListener {
     protected MenuListener menuListener;
+    private int selectedLocationId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.drawer_add_connection);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            selectedLocationId = Integer.parseInt(extras.getString("selectedLocation"));
+        }
 
         initializeUI();
     }
