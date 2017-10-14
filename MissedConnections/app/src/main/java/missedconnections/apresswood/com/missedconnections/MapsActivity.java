@@ -8,12 +8,16 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -25,6 +29,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         View.OnClickListener {
 
     protected MenuListener menuListener;
+    private int PLACE_PICKER_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +46,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onClick(View v) {
-        Intent addConnectionIntent = new Intent(this, AddConnectionActivity.class);
-        this.startActivity(addConnectionIntent);
-
+        initializePlacePicker();
     }
 
     protected void initializeUI() {
@@ -65,6 +68,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         TextView addConnectionButton = findViewById(R.id.add_connection_button);
         addConnectionButton.setOnClickListener(this);
+    }
+
+    protected void initializePlacePicker() {
+        try {
+            PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
+            startActivityForResult(builder.build(this), PLACE_PICKER_REQUEST);
+        } catch (Exception exception) {
+            Log.d("EXCEPTION: ", exception.getMessage());
+        }
     }
 
     /**
@@ -99,5 +111,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         };
     }
 
-
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == PLACE_PICKER_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                Place place = PlacePicker.getPlace(data, this);
+                Intent addConnectionIntent = new Intent(this, AddConnectionActivity.class);
+                addConnectionIntent.putExtra("selectedLocation", place.getId());
+                this.startActivity(addConnectionIntent);
+            }
+        }
+    }
 }

@@ -1,21 +1,14 @@
 package missedconnections.apresswood.com.missedconnections;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.ui.PlacePicker;
 
 public class AddConnectionActivity extends Activity implements View.OnClickListener {
     protected MenuListener menuListener;
-    int PLACE_PICKER_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +16,6 @@ public class AddConnectionActivity extends Activity implements View.OnClickListe
         setContentView(R.layout.drawer_add_connection);
 
         initializeUI();
-        initializePlacePicker();
     }
 
     @Override
@@ -44,15 +36,6 @@ public class AddConnectionActivity extends Activity implements View.OnClickListe
         backButton.setOnClickListener(this);
     }
 
-    protected void initializePlacePicker() {
-        try {
-            PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
-            startActivityForResult(builder.build(this), PLACE_PICKER_REQUEST);
-        } catch (Exception exception) {
-            Log.d("EXCEPTION: ", exception.getMessage());
-        }
-    }
-
     protected View.OnClickListener getSideMenuListener() {
         return new View.OnClickListener() {
             @Override
@@ -64,15 +47,5 @@ public class AddConnectionActivity extends Activity implements View.OnClickListe
                 }
             }
         };
-    }
-
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == PLACE_PICKER_REQUEST) {
-            if (resultCode == RESULT_OK) {
-                Place place = PlacePicker.getPlace(data, this);
-                String toastMsg = String.format("Place: %s", place.getName());
-                Toast.makeText(this, toastMsg, Toast.LENGTH_LONG).show();
-            }
-        }
     }
 }
